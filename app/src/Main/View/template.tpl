@@ -1,0 +1,14 @@
+<html>
+	<head></head>
+	<body>
+		<header>
+			HEADER
+		</header>
+		<section>
+			{$this->layoutContent}
+		</section>
+		<footer>
+			FOOTER
+		</footer>
+	</body>
+</html>
