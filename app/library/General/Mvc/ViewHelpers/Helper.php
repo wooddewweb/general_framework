@@ -1,4 +1,5 @@
 <?php
+
 namespace General\Mvc\ViewHelpers;
 
 /**

@@ -48,20 +48,22 @@ class Routes
 			}
 		}
 		
-		// Verifica se possui rota encontrada
+		// Se nao tem roda, utiliza a rota padrão
 		if (! $test) {
-			// Se nao tem roda, utiliza a rota padrão
-			try {
-				$route = (array)$this->getRoutes()->default;
-			}
-			catch(Exception $e) {
-				// @todo Adicionar tradução
-				throw new Exception("Rota default não encontrada");
-			}
+			$route_name = "default";
+		}
+		
+		// Tenta recuperar os dados da rota
+		try {
+			$route = $this->getRoutes()->$route_name;
+		}
+		catch(Exception $e) {
+			// @todo Adicionar tradução
+			throw new Exception("Rota default não encontrada");
 		}
 		
 		// Verifica os parametros encontrados
-		foreach ($route['defaults'] as $param => $default) {
+		foreach ($route->defaults as $param => $default) {
 			if (! $this->params[$param]) {
 				$this->params[$param] = $default;
 			}

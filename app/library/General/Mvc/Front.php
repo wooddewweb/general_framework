@@ -34,12 +34,21 @@ class Front
 	protected $_action;
 	
 	/**
+	 * Armazena o view
+	 */
+	protected $_view;
+	
+	/**
 	 * Construtor da classe
 	 */
 	public function __construct()
 	{
 		// Recupera o request
 		$this->_request = Services::getInstance()->getService("request");
+		
+		// Instancia o view e configura o controller
+		$view = new View();
+		$this->setView($view);
 	}
 
 	/**
@@ -71,7 +80,7 @@ class Front
 		}
 		
 		// Instancia o view e configura o controller
-		$view = new View();
+		$view = $this->getView();
 		$view->setTemplateDir(APPLICATION_PATH . "/src/" . ucfirst($this->getModule()) . "/View");
 		$view->setTemplate("template.tpl");
 		$view->setLayout($this->getController() . "/" . $this->getAction() . ".tpl");
@@ -83,6 +92,22 @@ class Front
 		// Retorna o output de todo processamento
 		$output = $view->execute();
 		$view->display($output);
+	}
+	
+	/**
+	 * Seta o view
+	 */
+	public function setView($view)
+	{
+		$this->_view = $view;
+	}
+	
+	/**
+	 * Recupera o view
+	 */
+	public function getView()
+	{
+		return $this->_view;
 	}
 	
 	/**
