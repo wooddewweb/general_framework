@@ -8,8 +8,6 @@ use General\Mvc\Front;
 
 /**
  * Procedimentos de inicialização da aplicação
- *
- * @author Bruno P. Gonçalves
  */
 class Bootstrap
 {

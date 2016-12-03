@@ -3,8 +3,6 @@ namespace General\Application;
 
 /**
  * Classe para configuração
- *
- * @author Bruno P. Gonçalves
  */
 class Config implements \Iterator
 {

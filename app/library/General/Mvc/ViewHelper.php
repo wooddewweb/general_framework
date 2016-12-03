@@ -4,8 +4,6 @@ namespace General\Mvc;
 
 /**
  * Classe que carrega os view helpers 
- *
- * @author Bruno P. Gonçalves
  */
 class ViewHelper
 {

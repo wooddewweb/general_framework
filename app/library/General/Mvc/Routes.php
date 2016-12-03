@@ -6,8 +6,6 @@ use General\Application\Exception;
 
 /**
  * Classe que trata as rotas
- *
- * @author Bruno P. Gonçalves
  */
 class Routes
 {

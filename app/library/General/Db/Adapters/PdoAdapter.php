@@ -6,8 +6,6 @@ use General\Application\Exception;
 
 /**
  * Adaptador de conexões PDO
- * 
- * @author Bruno P. Gonçalves
  */
 class PdoAdapter
 {

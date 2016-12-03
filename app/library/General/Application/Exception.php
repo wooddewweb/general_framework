@@ -3,8 +3,6 @@ namespace General\Application;
 
 /**
  * Trata os exceptions
- *
- * @author Bruno P. Gonçalves
  */
 class Exception extends \Exception
 {

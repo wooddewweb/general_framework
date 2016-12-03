@@ -4,8 +4,6 @@ namespace General\Application;
 
 /**
  * Manipula as sessões da aplicação
- *
- * @author Bruno P. Gonçalves
  */
 class Sessions
 {

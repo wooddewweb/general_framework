@@ -7,8 +7,6 @@ use General\Application\Exception;
 
 /**
  * Classe que trata as primeiras execuções do MVC
- *
- * @author Bruno P. Gonçalves
  */
 class Front
 {
@@ -57,13 +55,22 @@ class Front
 	public function run()
 	{
 		// Recupera os dados do MVC
-		$this->setModule($this->_request->getParam("module", "main"));
-		$this->setController($this->_request->getParam("controller", "index"));
-		$this->setAction($this->_request->getParam("action", "index"));
+		$this->setModule($this->_request->getParam("module"));
+		$this->setController($this->_request->getParam("controller"));
+		$this->setAction($this->_request->getParam("action"));
+		
+		// Instancia o bootstrap do modulo
+		$moduleBootstrapName = "\\" . ucfirst($this->getModule()) . "\\Bootstrap";
+		try {
+			$moduleBootstrap = new $moduleBootstrapName();
+		}
+		catch(Exception $e) {
+			die("Modulo não encontrado");
+		}
+		
 		
 		// Instancia o controlador
 		$controllerName = "\\" . ucfirst($this->getModule()) . "\\Controller\\" . ucfirst($this->getController() . "Controller");
-		
 		try {
 			$controller = new $controllerName();
 		}

@@ -10,8 +10,6 @@ use General\Application\Services;
 
 /**
  * Classe que as ações do view
- *
- * @author Bruno P. Gonçalves
  */
 class View
 {

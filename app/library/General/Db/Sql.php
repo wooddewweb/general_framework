@@ -5,8 +5,6 @@ namespace General\Db;
 /**
  * Cria os selects
  * 
- * @author Bruno P. Gonçalves
- * 
  * @todo Adicionar método para os joins
  */
 class Sql

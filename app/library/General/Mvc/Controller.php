@@ -6,8 +6,6 @@ use General\Application\Services;
 
 /**
  * Controlador MCV padrão do framework
- *
- * @author Bruno P. Gonçalves
  */
 class Controller
 {

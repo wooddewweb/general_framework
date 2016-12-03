@@ -6,8 +6,6 @@ use General\Application\Config;
 
 /**
  * Classe de conexão com o banco de dados Postgresql
- * 
- * @author Bruno P. Gonçalves
  */
 class Postgresql extends \PDO
 {

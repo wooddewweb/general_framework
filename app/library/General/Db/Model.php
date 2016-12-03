@@ -7,8 +7,6 @@ use General\Db\Sql;
 
 /**
  * Modelo de dados referentes e armazenados no banco de dados
- *
- * @author Bruno P. Gonçalves
  */
 class Model
 {

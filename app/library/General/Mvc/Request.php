@@ -4,8 +4,6 @@ namespace General\Mvc;
 use General\Application\Services;
 /**
  * Classe que trata as requisições do MVC
- *
- * @author Bruno P. Gonçalves
  */
 class Request
 {

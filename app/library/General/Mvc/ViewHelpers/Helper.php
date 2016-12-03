@@ -4,8 +4,6 @@ namespace General\Mvc\ViewHelpers;
 
 /**
  * Classe abstrata para os viewhelpers
- *
- * @author Bruno P. Gonçalves
  */
 class Helper
 {

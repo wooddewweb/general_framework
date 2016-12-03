@@ -5,8 +5,6 @@ use General\Application\Exception;
 
 /**
  * Gerencia os serviços para torna-los acessivel à toda aplicação
- *
- * @author Bruno P. Gonçalves
  */
 class Services
 {

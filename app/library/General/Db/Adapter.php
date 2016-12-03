@@ -7,8 +7,6 @@ use General\Application\Services;
 
 /**
  * Conexão com o banco de dados
- *
- * @author Bruno P. Gonçalves
  * 
  * @todo Implementar os adapters para cada banco
  */
