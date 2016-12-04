@@ -99,7 +99,7 @@ class Routes
 		$url = $route_expression = $route->pattern;
 		
 		// Faz a busca pelas chaves { e }
-		preg_match_all("/\{(\/)?(\w+)\}/i", $route_expression, $param_names);
+		preg_match_all("/\{(\/)?([\w|\-|\.]+)\}/i", $route_expression, $param_names);
 		foreach ($param_names[0] as $index => $param_name) {
 				
 			$outparam = $param_name = str_replace("{", "", str_replace("}", "", $param_name));
@@ -164,7 +164,7 @@ class Routes
 		$params = NULL;
 		
 		// Faz a busca pelas chaves { e }
-		preg_match_all("/\{(\/)?(\w+)\}/i", $route_expression, $param_names);
+		preg_match_all("/\{(\/)?([[\w|\-|\.]|\-|\.]+)\}/i", $route_expression, $param_names);
 		foreach ($param_names[0] as $index => $param_name) {
 			
 			$outparam = $param_name = str_replace("{", "", str_replace("}", "", $param_name));
@@ -180,7 +180,7 @@ class Routes
 			}
 			
 			// Substitui o marcador por uma expressão regular
-			$route_expression = str_replace("{" . $param_name . "}", "(" . $optional . "(?<" . $outparam . ">\w+))?", $route_expression);
+			$route_expression = str_replace("{" . $param_name . "}", "(" . $optional . "(?<" . $outparam . ">[\w|\-|\.]+))?", $route_expression);
 		}
 		
 		// Adiciona a busca pelo restante de parametros
@@ -207,7 +207,7 @@ class Routes
 			}
 			
 			// Percorre o restante dos parametros
-			preg_match_all("/\/(?<param>\w+)\/(?<value>\w+)/", $matches['params'], $matches);
+			preg_match_all("/\/(?<param>[\w|\-|\.]+)\/(?<value>[\w|\-|\.]+)/", $matches['params'], $matches);
 			foreach ($matches['param'] as $index => $param) {
 				// Adiciona o parametro
 				$this->setParam($param, $matches['value'][$index]);
