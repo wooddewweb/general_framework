@@ -5,6 +5,8 @@ namespace General\Db;
 /**
  * Cria os selects
  * 
+ * @author Bruno P. Gonçalves
+ * 
  * @todo Adicionar método para os joins
  */
 class Sql
@@ -216,6 +218,17 @@ class Sql
 	}
 	
 	/**
+	 * Seta o grupo
+	 *
+	 * @param string $group
+	 */
+	public function group($group)
+	{
+		$this->group[] = $group;
+		return $this;
+	}
+	
+	/**
 	 * Parse todo o sql
 	 * 
 	 * @return string
@@ -238,6 +251,9 @@ class Sql
 		
 		// 
 		$sql = $this->parse_order($sql);
+		
+		// 
+		$sql = $this->parse_group($sql);
 		
 		// Adiciona o limit
 		if($this->limit > 0) {
@@ -363,6 +379,29 @@ class Sql
 		foreach($this->order as $order) {
 			$sql .= " " . $order;
 			if($order !== end($this->order)) {
+				$sql .= ",";
+			}
+		}
+		
+		// 
+		return $sql;
+	}
+	
+	/**
+	 * Parse os groups
+	 * 
+	 * @param string $sql
+	 * @return string
+	 */
+	private function parse_group($sql)
+	{
+		if(count($this->group) > 0) {
+			$sql .= " GROUP BY";
+		}
+		
+		foreach($this->group as $group) {
+			$sql .= " " . $group;
+			if($group !== end($this->group)) {
 				$sql .= ",";
 			}
 		}
