@@ -46,10 +46,13 @@ class Routes
 			}
 		}
 		
+		
+		
 		// Se nao tem roda, utiliza a rota padrão
 		if (! $test) {
 			$route_name = "default";
 		}
+		
 		
 		// Tenta recuperar os dados da rota
 		try {
@@ -59,6 +62,7 @@ class Routes
 			// @todo Adicionar tradução
 			throw new Exception("Rota default não encontrada");
 		}
+		
 		
 		// Verifica os parametros encontrados
 		foreach ($route->defaults as $param => $default) {
@@ -164,7 +168,7 @@ class Routes
 		$params = NULL;
 		
 		// Faz a busca pelas chaves { e }
-		preg_match_all("/\{(\/)?([[\w|\-|\.]|\-|\.]+)\}/i", $route_expression, $param_names);
+		preg_match_all("/\{(\/)?([\w|\-|\.]+)\}/i", $route_expression, $param_names);
 		foreach ($param_names[0] as $index => $param_name) {
 			
 			$outparam = $param_name = str_replace("{", "", str_replace("}", "", $param_name));
@@ -189,6 +193,8 @@ class Routes
 		
 		// Busca os valores da URL com base na expressão montada
 		$test = preg_match("/" . $route_expression . "/", $uri, $matches);
+		
+		
 		if ($test) {
 			$params = array();
 			
