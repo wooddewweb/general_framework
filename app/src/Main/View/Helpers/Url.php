@@ -43,10 +43,16 @@ class Url extends Helper
 		$uri = $route->pattern;
 		
 		// Faz a busca pelas chaves { e } no pattern
-		preg_match_all("/\{(\/)?(\w+)\}/i", $uri, $param_names);
+		preg_match_all("/\{(\/)?([\w|\-|\.]+)\}/i", $uri, $param_names);
+		
 		foreach ($param_names[0] as $index => $pattern_name) {
 			
 			$param_name = substr($pattern_name, 1, strlen($pattern_name)-2);
+			$divisor = "";
+			if($param_name[0] == "/") {
+				$param_name = substr($param_name, 1);
+				$divisor = "/";
+			}
 			
 			// Verifica se possui parametro
 			if(isset($params[$param_name])) {
@@ -65,8 +71,7 @@ class Url extends Helper
 				}
 				
 			}
-			
-			$uri = str_replace($pattern_name, $param_value, $uri);
+			$uri = str_replace($pattern_name, $divisor . $param_value, $uri);
 		}
 		
 		// Retorna o uri
