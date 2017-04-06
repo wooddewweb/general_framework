@@ -15,9 +15,13 @@ return array(
 	
 	// Rotas
 	'routes' => array(
+	
+		/*
+			URL: /obrigatorio{/opcional}{/opcional}
+		*/
 		// Rota padrão
 		'default' => array(
-			'pattern' => "{/module}{/controller}{/action}",
+			'pattern' => "/{module}{/controller}{/action}",
 			'defaults' => array(
 				'module' => "main",
 				'controller' => "index",
