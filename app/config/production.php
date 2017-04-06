@@ -17,12 +17,12 @@ return array(
 	'routes' => array(
 		// Rota padrão
 		'default' => array(
-			'pattern' => "/{module}/{controller}/{action}",
+			'pattern' => "{/module}{/controller}{/action}",
 			'defaults' => array(
 				'module' => "main",
 				'controller' => "index",
 				'action' => "index",
 			)
-		),
+		)
 	),
 );
