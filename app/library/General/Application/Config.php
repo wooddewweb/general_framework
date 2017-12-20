@@ -52,7 +52,7 @@ class Config implements \Iterator
 	/**
 	 * Efetua a leitura da configuração
 	 */
-	protected function readConfig($filename)
+	static protected function readConfig($filename)
 	{
 		if (! file_exists($filename)) {
 			// @todo Adicionar tradução
