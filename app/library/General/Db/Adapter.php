@@ -46,7 +46,7 @@ abstract class Adapter
 	 * 
 	 * @return mixed
 	 */
-	protected function connect($params)
+	static protected function connect($params)
 	{
 		try {
 			// Monta o tipo do adapter
