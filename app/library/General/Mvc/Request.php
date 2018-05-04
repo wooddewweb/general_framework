@@ -75,7 +75,7 @@ class Request
 	 * @param $name String Nome do parametro
 	 * @param $default String Valor padrão para o parametro
 	 */
-	public function getParam($name, $default)
+	public function getParam($name, $default=NULL)
 	{
 		// Verifica se o parametro existe
 		if(isset($this->params[$name])) {
