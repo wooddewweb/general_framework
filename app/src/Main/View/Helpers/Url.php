@@ -24,7 +24,10 @@ class Url extends Helper
 		$this->config = Services::getInstance()->getService("config");
 		$routes = $this->config->routes;
 		$baseurl = $this->config->application->baseurl;
-		
+
+		// Armazena os parametros para adicionar o restante nos adicionais
+		$params_additionals = $params;
+
 		// Remove a ultima barra caso houver
 		if($baseurl[strlen($baseurl) - 1] == "/") {
 			$baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
@@ -57,6 +60,7 @@ class Url extends Helper
 			// Verifica se possui parametro
 			if(isset($params[$param_name])) {
 				$param_value = $params[$param_name];
+				unset($params_additionals[$param_name]);
 			}
 			
 			// Verifica se possui parametro opcional
@@ -72,6 +76,11 @@ class Url extends Helper
 				
 			}
 			$uri = str_replace($pattern_name, $divisor . $param_value, $uri);
+		}
+
+		// Adiciona os parametros adicionais
+		foreach($params_additionals as $param => $value) {
+			$uri .= "/" . $param . "/" . $value;
 		}
 		
 		// Retorna o uri
