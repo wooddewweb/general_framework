@@ -23,7 +23,7 @@ class Routes
 	/**
 	 * Armazena os parametros
 	 */
-	protected $params = array();
+	protected $params = [];
 
 	/**
 	 * Construtor da classe
@@ -45,8 +45,6 @@ class Routes
 				break;
 			}
 		}
-		
-		
 		
 		// Se nao tem roda, utiliza a rota padrão
 		if (! $test) {
@@ -196,7 +194,7 @@ class Routes
 		
 		
 		if ($test) {
-			$params = array();
+			$params = [];
 			
 			foreach ($param_names[0] as $param) {
 				

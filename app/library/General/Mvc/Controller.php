@@ -32,6 +32,9 @@ class Controller
 		
 		// Executa o hook de inicialização
 		$this->configure();
+
+		// Instancia o helper
+		$this->helper = new ControllerHelper($this);
 	}
 	
 	/**

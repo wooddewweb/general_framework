@@ -10,12 +10,12 @@ class Request
 	/**
 	 * Armazena os parametros
 	 */
-	protected $params = array();
+	protected $params = [];
 	
 	/**
 	 * Armazena o caminho padrão da url
 	 */
-	protected $_basepath = array();
+	protected $_basepath = [];
 	
 	/**
 	 * Armazena o objeto da rota
