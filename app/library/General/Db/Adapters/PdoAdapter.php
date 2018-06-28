@@ -61,7 +61,7 @@ class PdoAdapter
 			$response->execute($params);
 		} catch (\PDOException $e) {
 			// @todo Traduzir a mensagem
-			throw new Exception($e->getMessage());
+			throw new \Exception($e->getMessage());
 		}
 	
 		return $response;
