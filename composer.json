@@ -9,5 +9,12 @@
 		"smarty/smarty" : "3.1.*",
 		"phpmailer/phpmailer" : "6.*"
 	},
+
+	"autoload": {
+        "psr-4": {
+            "General\\": "app/library/General/",
+            "Main\\": "app/src/Main/"
+        }
+    }
 	
 }

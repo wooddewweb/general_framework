@@ -2,9 +2,6 @@
 
 namespace General\Mvc;
 
-// Inclui o objeto smarty
-require_once (APPLICATION_PATH . "/library/vendors/Smarty/Smarty.class.php");
-
 use General\Mvc\Request;
 use General\Application\Services;
 

@@ -23,6 +23,9 @@ APPLICATION_PATH . "/src",
 	get_include_path()
 )));
 
+// Include autoloader
+require_once ("vendors/autoload.php");
+
 // Inicial a aplicação
 require_once ("General/Application/Bootstrap.php");
 $application = new \General\Application\Bootstrap();

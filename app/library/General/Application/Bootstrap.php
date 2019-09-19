@@ -19,7 +19,7 @@ class Bootstrap
 		// @todo Verificar qual o tipo de arquivo para enviar ao minify ou ao image cache
 		
 		// Inicia o autoloader
-		spl_autoload_register(array($this, "__autoloader"));
+		// spl_autoload_register(array($this, "__autoloader"));
 		
 		// Inicia o uso de sessões
 		session_start();
@@ -53,7 +53,7 @@ class Bootstrap
 	/**
 	 * Autoloader
 	 */
-	private function __autoloader($className)
+	private function __autoloader1($className)
 	{
 		
 		// Percorre os paths para busca

@@ -1,0 +1,3 @@
+composer.lock
+app/data/*
+app/library/vendors/*
