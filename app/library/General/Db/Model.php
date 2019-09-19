@@ -87,7 +87,7 @@ class Model
 	 */
 	public function getFullTable()
 	{
-		if(!$this->getSchema() == NULL) {
+		if($this->getSchema() == NULL) {
 			return $this->table;
 		}
 		else {
@@ -231,17 +231,22 @@ class Model
 	{
 		$sql = "UPDATE " . $this->getFullTable() . " SET";
 		
+		
 		//
 		$params = array();
+		$count = 0;
 		foreach ($data as $field => $value) {
+			$count++;
+
 			$sql .= " " . $field . " = ?";
 			$params[] = $value;
 			
-			if ($value !== end($data)) {
+
+			if (count($data) != $count) {
 				$sql .= ",";
 			}
 		}
-		
+
 		//
 		if (count($where) > 0) {
 			$sql .= " WHERE";
@@ -274,7 +279,7 @@ class Model
 				}
 			}
 		}
-		
+
 		try {
 			$res = $this->adapter->execute($sql, $params);
 		}

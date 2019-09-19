@@ -14,12 +14,20 @@ ini_set("display_errors", "On");
 defined("APPLICATION_PATH") || define("APPLICATION_PATH", dirname(__FILE__) . "/../app");
 
 // Define application environment
-defined("APPLICATION_ENV") || define("APPLICATION_ENV", (getenv("APPLICATION_ENV") ? getenv("APPLICATION_ENV") : "production"));
+defined("APPLICATION_ENV_GERAL") || define("APPLICATION_ENV_GERAL", (getenv("APPLICATION_ENV_GERAL") ? getenv("APPLICATION_ENV_GERAL") : ""));
+if(strlen(APPLICATION_ENV_GERAL) > 0) {
+	defined("APPLICATION_ENV") || define("APPLICATION_ENV", APPLICATION_ENV_GERAL);
+}
+else {
+	// Define application environment
+	defined("APPLICATION_ENV") || define("APPLICATION_ENV", (getenv("APPLICATION_ENV") ? getenv("APPLICATION_ENV") : "production"));
+}
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
 APPLICATION_PATH . "/src",
 	APPLICATION_PATH . "/library",
+	APPLICATION_PATH . "/library/vendors",
 	get_include_path()
 )));
 

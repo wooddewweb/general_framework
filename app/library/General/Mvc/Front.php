@@ -52,7 +52,7 @@ class Front
 	/**
 	 * Inicia o processamento do MVC
 	 */
-	public function run()
+	public function run($a=0)
 	{
 		// Recupera os dados do MVC
 		$this->setModule($this->_request->getParam("module"));
@@ -61,13 +61,12 @@ class Front
 		
 		// Instancia o bootstrap do modulo
 		$moduleBootstrapName = "\\" . ucfirst($this->getModule()) . "\\Bootstrap";
-		try {
+		if(!class_exists($moduleBootstrapName)) {
+			throw new Exception("Não foi possivel encontrar o modulo $moduleBootstrapName", 404);
+		}
+		else {
 			$moduleBootstrap = new $moduleBootstrapName();
 		}
-		catch(Exception $e) {
-			die("Modulo não encontrado");
-		}
-		
 		
 		// Instancia o controlador
 		$controllerName = "\\" . ucfirst($this->getModule()) . "\\Controller\\" . ucfirst($this->getController() . "Controller");
@@ -76,14 +75,14 @@ class Front
 		}
 		catch(Exception $e) {
 			// @todo Adicionar tradução
-			throw new Exception("Não foi possivel encontrar o controlador $controllerName");
+			throw new Exception("Não foi possivel encontrar o controlador $controllerName", 404);
 		}
 		
 		// Verifica se o método existe
 		$actionName = $this->getAction() . "Action";
 		if(!method_exists($controller, $actionName)) {
 			// @todo Adicionar tradução
-			throw new Exception("Não foi possivel disparar a ação $actionName do controller $controllerName");
+			throw new \Exception("Não foi possivel disparar a ação $actionName do controller $controllerName", 404);
 		}
 		
 		// Instancia o view e configura o controller

@@ -1,22 +1,23 @@
 <?php
 
-return array(
+return [
+	
 	// Configura a aplicação
-	'application' => array(
+	'application' => [
 		'baseurl' => "",
 		'basedomain' => "",
-	),
+	],
 	
 	// Configura o banco de dados
-	'database' => array(
+	'database' => [
 		'type' => "pdo",
 		'driver' => "postgresql",
 		'host' => "",
 		'database' => "",
 		'username' => "",
 		'password' => "",
-	),
+	],
 	
 	// Configura as rotas
-	'routes' => array(),
-);
+	'routes' => [],
+];

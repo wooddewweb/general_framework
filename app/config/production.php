@@ -1,32 +1,45 @@
 <?php
 
-return array(
+return [
 	// Configura a aplicação
-	'application' => array(
-		'baseurl' => ""
-	),
+	'application' => [
+		'baseurl' => "",
+		'basedomain' => "localhost",
+		'errors' => [
+			'module' => "main",
+			'controller' => "errors",
+			'display_errors' => TRUE
+		],
+	],
 	
 	// Configura o banco de dados
-	'database' => array(
+	'database' => [
 		'type' => "pdo",
 		'driver' => "postgresql",
-		'filename' => APPLICATION_PATH . "/data/database.sqlite"
-	),
+		'host' => "",
+		'database' => "",
+		'username' => "",
+		'password' => "",
+	],
 	
 	// Rotas
-	'routes' => array(
+	'routes' => [
 	
 		/*
 			URL: /obrigatorio{/opcional}{/opcional}
 		*/
+
 		// Rota padrão
-		'default' => array(
+		'default' => [
 			'pattern' => "/{module}{/controller}{/action}",
-			'defaults' => array(
+			'defaults' => [
 				'module' => "main",
 				'controller' => "index",
 				'action' => "index",
-			)
-		)
-	),
-);
+			]
+		],
+
+
+	],
+
+];
