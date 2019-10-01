@@ -48,6 +48,10 @@ class Bootstrap extends \General\Mvc\Bootstrap
 	 */
 	public function iniViewHelpers()
 	{
+		$front = Application\Services::getInstance()->getService("front");
 		
+		// Config
+		$config = Application\Services::getInstance()->getService("config");
+		$front->getView()->_config = $config;
 	}
 }
