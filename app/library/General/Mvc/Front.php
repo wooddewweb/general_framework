@@ -60,12 +60,17 @@ class Front
 		$this->setAction($this->_request->getParam("action"));
 		
 		// Instancia o bootstrap do modulo
-		$moduleBootstrapName = "\\" . ucfirst($this->getModule()) . "\\Bootstrap";
-		if(!class_exists($moduleBootstrapName)) {
-			throw new Exception("Não foi possivel encontrar o modulo $moduleBootstrapName", 404);
+		try {
+			$moduleBootstrapName = "\\" . ucfirst($this->getModule()) . "\\Bootstrap";
+			if(!class_exists($moduleBootstrapName)) {
+				throw new \Exception("Não foi possivel encontrar o modulo $moduleBootstrapName", 404);
+			}
+			else {
+				$moduleBootstrap = new $moduleBootstrapName();
+			}
 		}
-		else {
-			$moduleBootstrap = new $moduleBootstrapName();
+		catch(\Exception $e) {
+			throw new Exception("Não foi possivel encontrar o controlador $controllerName", 404);
 		}
 		
 		// Instancia o controlador

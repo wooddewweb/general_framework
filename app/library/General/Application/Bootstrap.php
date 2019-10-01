@@ -19,7 +19,7 @@ class Bootstrap
 		// @todo Verificar qual o tipo de arquivo para enviar ao minify ou ao image cache
 		
 		// Inicia o autoloader
-		// spl_autoload_register(array($this, "__autoloader"));
+		spl_autoload_register(array($this, "__autoloader"));
 		
 		// Inicia o uso de sessões
 		session_start();
@@ -47,15 +47,27 @@ class Bootstrap
 		// Cria o front controller
 		$front = new Front();
 		Services::getInstance()->addService("front", $front);
-		$front->run();
+		try {
+			$front->run();
+		}
+		catch(\Exception $e) {
+
+			$request = Services::getInstance()->getService("request");
+			$request->setParam("module", $config->application->errors->module);
+			$request->setParam("controller", $config->application->errors->controller);
+			$request->setParam("action", "error");
+			
+			$front->getView()->exception = $e;
+			$front->run();
+		}
 	}
 	
 	/**
 	 * Autoloader
 	 */
-	private function __autoloader1($className)
+	private function __autoloader($className)
 	{
-		
+
 		// Percorre os paths para busca
 		$paths = explode(":", ini_get('include_path'));
 		foreach($paths as $path) {
@@ -69,11 +81,14 @@ class Bootstrap
 				// Retorna para nao passar pelo Exception
 				return TRUE;
 			}
+			else {
+				// die($className);
+			}
 		}
 		
 		// @todo Adicionar tradução
 		if(!class_exists($className)) {
-			//throw new Exception("Classe $className ($filename) não encontrada");
+			throw new Exception("Classe $className ($filename) não encontrada");
 		}
 	}
 }

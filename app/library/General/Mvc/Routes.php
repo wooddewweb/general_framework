@@ -47,7 +47,7 @@ class Routes
 		}
 		
 		// Se nao tem roda, utiliza a rota padrão
-		if (! $test) {
+		if (!$test) {
 			$route_name = "default";
 		}
 		
@@ -58,7 +58,7 @@ class Routes
 		}
 		catch(Exception $e) {
 			// @todo Adicionar tradução
-			throw new Exception("Rota default não encontrada");
+			throw new Exception("Rota default não encontrada", 404);
 		}
 		
 		
@@ -88,7 +88,7 @@ class Routes
 		}
 		catch (Exception $e) {
 			// @todo Adicionar tradução
-			throw new Exception("Route {$name} not found");
+			throw new Exception("Route {$name} not found", 404);
 		}
 	}
 	
