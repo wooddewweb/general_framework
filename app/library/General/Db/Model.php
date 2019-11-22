@@ -126,6 +126,14 @@ class Model
 	}
 	
 	/**
+	 *
+	 */
+	public function getAdapter()
+	{
+		return $this->adapter;
+	}
+
+	/**
 	 * Recupera o select
 	 *
 	 * @return Sql
@@ -296,7 +304,7 @@ class Model
 	 * @param array $where Vetor contendo as clausulas WHERE
 	 * @return bool
 	 */
-	public function delete($where)
+	public function delete($where=[])
 	{
 		$sql = "DELETE FROM " . $this->getFullTable();
 		
@@ -305,6 +313,7 @@ class Model
 			$sql .= " WHERE";
 		}
 		
+		$params = [];
 		foreach ($where as $field => $value) {
 			if ($value !== reset($where)) {
 				$sql .= " AND";
