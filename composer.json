@@ -1,5 +1,7 @@
 {
-	
+	"name": "agenciageneral/general_framework",
+	"version": "0.1",
+	"description": "General Framework",
 	"config" : {
 		"vendor-dir" : "app/library/vendors"
 	},
