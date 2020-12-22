@@ -35,7 +35,7 @@ class Messages
 	{
 		self::initialize();
 		
-		// Adiciona mensagens de erro
+		// Adiciona mensagens de sucesso
 		$success = self::$_messages->success;
 		if(!is_array($success)) {
 			$success = [];
@@ -68,7 +68,7 @@ class Messages
 	{
 		self::initialize();
 
-		// Adiciona mensagens de erro
+		// Adiciona mensagens de alerta
 		$alert = self::$_messages->alert;
 		if(!is_array($alert)) {
 			$alert = [];
@@ -84,7 +84,7 @@ class Messages
 	{
 		self::initialize();
 		
-		// Adiciona mensagens de erro
+		// Adiciona mensagens de informação
 		$info = self::$_messages->info;
 		if(!is_array($info)) {
 			$info = [];
